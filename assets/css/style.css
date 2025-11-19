@@ -829,6 +829,19 @@ main {
   line-height: 1.6;
 }
 
+/* Optional: Style the new <ul> lists for experience */
+.experience-list {
+    margin-top: 10px;
+    margin-left: 20px;
+    padding-left: 0;
+    list-style-type: disc; /* Ensures a standard bullet dot */
+    color: var(--white-2);
+}
+
+.experience-list li {
+    margin-bottom: 5px;
+}
+
 
 /**
  * skills 
@@ -865,6 +878,16 @@ main {
   background: var(--text-gradient-yellow);
   height: 100%;
   border-radius: inherit;
+}
+
+/* --- FIX: SKILLS TEXT COLOR --- */
+.skill .skills-list .skills-item .skill-text {
+  /* Set the text color to the light variable used in the theme (e.g., --white-2) */
+  color: var(--white-2); 
+  /* Add margin/padding adjustments if needed for spacing */
+  padding-top: 5px; 
+  padding-bottom: 25px;
+  line-height: 1.6;
 }
 
 
