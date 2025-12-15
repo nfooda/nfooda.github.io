@@ -830,7 +830,7 @@ main {
 }
 
 /* Optional: Style the new <ul> lists for experience */
-.experience-list {
+.timeline-item ul {
     margin-top: 10px;
     margin-left: 20px;
     padding-left: 0;
@@ -838,7 +838,8 @@ main {
     color: var(--white-2);
 }
 
-.experience-list li {
+.timeline-item ul li {
+    list-style-type: disc;
     margin-bottom: 5px;
 }
 
@@ -1454,7 +1455,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .testimonials-item-title {
     margin-bottom: 10px;
-    margin-left: 95px;
   }
 
   .testimonials-text {
