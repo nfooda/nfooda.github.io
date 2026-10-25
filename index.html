@@ -11,22 +11,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #ffffff;
-    --text: #1f2328;
-    --muted: #5d6670;
-    --line: #e6e8eb;
-    --accent: #1d4ed8;
-    --chip: #f3f5f8;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #111418; --text: #e6e8eb; --muted: #9aa3ad;
-      --line: #262b31; --accent: #7aa2ff; --chip: #1a1f25;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #111418; --text: #e6e8eb; --muted: #9aa3ad;
-    --line: #262b31; --accent: #7aa2ff; --chip: #1a1f25;
+    color-scheme: dark;
+    --bg: #111418;
+    --text: #e6e8eb;
+    --muted: #9aa3ad;
+    --line: #262b31;
+    --accent: #7aa2ff;
+    --chip: #1a1f25;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -48,8 +39,8 @@
     border: 1px solid var(--line); color: var(--text);
   }
   .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-  .links a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .links a.primary:hover { opacity: .9; color: #fff; }
+  .links a.primary { background: var(--accent); border-color: var(--accent); color: #0d1117; }
+  .links a.primary:hover { opacity: .9; color: #0d1117; }
 
   .banner {
     margin: 32px 0 0; padding: 12px 16px; border-left: 3px solid var(--accent);
@@ -77,6 +68,15 @@
   ul.plain { list-style: none; padding: 0; margin: 0; }
   ul.plain li { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 4px 0; }
 
+  .pub { margin-bottom: 18px; }
+  .pub .ptitle { font-weight: 600; }
+  .pub .authors { font-size: .93rem; color: var(--muted); }
+  .pub .authors b { color: var(--text); font-weight: 600; }
+  .pub .venue { font-size: .93rem; }
+  .pub .venue a { margin-left: 8px; font-size: .85rem; }
+  .badge { display: inline-block; font-size: .75rem; font-weight: 600; padding: 1px 8px; border-radius: 6px; background: var(--chip); color: var(--accent); margin-right: 6px; }
+  .item ul { margin: 6px 0 0; padding-left: 20px; font-size: .95rem; }
+  .item li { margin-bottom: 4px; }
   .skills div { margin-bottom: 6px; }
   .skills b { font-weight: 600; }
 
@@ -100,27 +100,66 @@
     </div>
   </header>
 
+  <nav class="links" style="margin-top:28px">
+    <a href="#publications">Publications</a>
+    <a href="#research">Research</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+  </nav>
+
   <div class="banner">
     <strong>Seeking Summer 2027 internships</strong> in security, privacy, or networking research and engineering.
   </div>
 
   <section id="about">
     <h2>About</h2>
-    <p>I'm a Ph.D. student at the University of Maryland, advised by <a href="https://www.cs.umd.edu/~dml/" target="_blank" rel="noopener">Prof. Dave Levin</a>. My research is in web privacy and network security: I measure how privacy-preserving technologies such as DNS over HTTPS, TLS, and certificate revocation actually perform and get adopted in real-world browsers.</p>
+    <p>I'm a Ph.D. student at the University of Maryland, advised by <a href="https://www.cs.umd.edu/~dml/" target="_blank" rel="noopener">Prof. Dave Levin</a>. I work on Internet measurement and network security, with a focus on the Web PKI: how quickly certificate revocations actually reach browsers, how Firefox checks revocation at scale with CRLite, and how privacy technologies like DNS over HTTPS and Encrypted Client Hello are used in practice. My work has appeared at ACM SIGCOMM and ACM IMC.</p>
     <p>Before my Ph.D., I worked as a software engineer intern at Siemens, building C/C++ tooling and internal dashboards, and I have hands-on experience in full-stack development, hardware security, and applied ML/NLP.</p>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <div class="pub">
+      <div class="ptitle">Comprehensive Revocation Checking at Scale: the Deployment of CRLite in Mozilla Firefox</div>
+      <div class="authors"><b>Nehal Fooda</b>, James Larisch, John Schanck, Taejoong Chung, Dave Levin, Bruce M. Maggs, Christo Wilson</div>
+      <div class="venue"><span class="badge">SIGCOMM 2026</span>ACM SIGCOMM, Denver, CO<a href="https://doi.org/10.1145/3789240.3829108" target="_blank" rel="noopener">DOI</a></div>
+    </div>
+    <div class="pub">
+      <div class="ptitle">A First Look at Certificate Revocation Latency</div>
+      <div class="authors"><b>Nehal Fooda</b>, James Larisch, John Schanck, Bruce M. Maggs, Taejoong Chung, Dave Levin</div>
+      <div class="venue"><span class="badge">IMC 2026</span>ACM Internet Measurement Conference<a href="https://doi.org/10.1145/3777912.3839820" target="_blank" rel="noopener">DOI</a></div>
+    </div>
   </section>
 
   <section id="research">
     <h2>Research</h2>
     <div class="item">
-      <div class="title">Evaluating Modern Certificate Revocation (CRLite)</div>
-      <p>Measuring how PKI changes since 2017 (shorter certificate lifetimes, the rise of Let's Encrypt) affect large-scale revocation. Evaluating CRLite filter generation and partitioning strategies under normal and mass-revocation events, and quantifying the window of vulnerability and bandwidth overhead.</p>
-      <div class="tags"><span>PKI</span><span>TLS</span><span>Browser security</span><span>Measurement</span></div>
+      <div class="row"><span class="title">Certificate Revocation Latency</span><span class="date">IMC 2026 · extension ongoing</span></div>
+      <ul>
+        <li>Built a framework that issues certificates, revokes them immediately, and polls each CA's OCSP responder and CRL every minute, alongside Mozilla's CRLite snapshots, until the revocation appears.</li>
+        <li>Ran about 3,000 trials over 22 days against six CAs that together account for over 75% of Firefox certificate validations.</li>
+        <li>All six CAs met their Baseline Requirements deadlines, yet clients stay exposed for hours or days because of pre-signed OCSP responses, cached CRLs, and filter rebuild schedules.</li>
+        <li>Now extending the study to every CA with an automated revocation interface, regional CAs, and revocations requested by portal, email, or phone.</li>
+      </ul>
+      <div class="tags"><span>Web PKI</span><span>OCSP / CRL</span><span>Internet measurement</span><span>Python</span></div>
     </div>
     <div class="item">
-      <div class="title">Privacy-Technology Adoption in Firefox</div>
-      <p>Designing and building a Firefox extension that logs users' privacy settings and browser behavior to study real-world adoption of DNS over HTTPS, TLS, and revocation checking.</p>
-      <div class="tags"><span>DoH</span><span>Web privacy</span><span>User study</span><span>JavaScript</span></div>
+      <div class="row"><span class="title">CRLite Deployment in Mozilla Firefox</span><span class="date">SIGCOMM 2026</span></div>
+      <ul>
+        <li>Evaluated CRLite, the on-device revocation system deployed to all Firefox desktop users, in collaboration with Mozilla engineers.</li>
+        <li>Using 90 days of Firefox telemetry and production logs, found CRLite covers 87.63% of real certificate validations, and traced nearly all of the rest to update windows and ingest delays.</li>
+        <li>Measured filter update costs during the 2025 Microsoft mass revocation and simulated revoking half of all certificates, showing the filter recovers within a week under short certificate lifetimes.</li>
+      </ul>
+      <div class="tags"><span>CRLite</span><span>Browser security</span><span>TLS</span><span>Telemetry analysis</span></div>
+    </div>
+    <div class="item">
+      <div class="row"><span class="title">Measuring Web Privacy from the User's Side</span><span class="date">ongoing</span></div>
+      <ul>
+        <li>Built a Firefox extension and server back end that record, per site visited, whether the connection uses encrypted DNS, Encrypted Client Hello (ECH), and OCSP-free revocation checking.</li>
+        <li>Designed for participant privacy: only per-site aggregate counts, no browsing history, and nothing uploaded without consent.</li>
+        <li>Validating its measurements against Firefox's network logs ahead of an IRB-approved deployment to about 200 participants.</li>
+      </ul>
+      <div class="tags"><span>DoH</span><span>ECH</span><span>Web privacy</span><span>JavaScript</span></div>
     </div>
   </section>
 
@@ -129,7 +168,7 @@
     <div class="item">
       <div class="row"><span class="title">Graduate Research Assistant</span><span class="date">Jan 2025 – Present</span></div>
       <div class="sub">University of Maryland</div>
-      <p>Web privacy, network security, and certificate revocation systems.</p>
+      <p>Internet measurement and Web PKI security; first-author papers at SIGCOMM 2026 and IMC 2026.</p>
     </div>
     <div class="item">
       <div class="row"><span class="title">Graduate Teaching Assistant</span><span class="date">Aug 2023 – Present</span></div>
@@ -152,7 +191,7 @@
     <h2>Education</h2>
     <div class="item">
       <div class="row"><span class="title">Ph.D., Computer Engineering</span><span class="date">2023 – Present</span></div>
-      <div class="sub">University of Maryland, College Park · GPA 3.76</div>
+      <div class="sub">University of Maryland, College Park · GPA 3.83</div>
     </div>
     <div class="item">
       <div class="row"><span class="title">B.S., Computer Engineering, magna cum laude</span><span class="date">2019 – 2023</span></div>
@@ -172,8 +211,8 @@
 
   <section id="skills" class="skills">
     <h2>Skills</h2>
-    <div><b>Languages:</b> Python, C/C++, JavaScript, Java, SQL, MATLAB</div>
-    <div><b>Security &amp; networking:</b> TLS/PKI, DNS/DoH, reverse engineering, hardware security, static analysis (Coverity)</div>
+    <div><b>Languages:</b> Python, C/C++, Rust, JavaScript, Java, SQL, MATLAB</div>
+    <div><b>Security &amp; networking:</b> TLS/PKI, OCSP/CRL, DNS/DoH, ECH, reverse engineering, hardware security, static analysis (Coverity)</div>
     <div><b>Frameworks &amp; tools:</b> Django, React, Angular, TensorFlow, Keras, Git, JMeter</div>
   </section>
 
