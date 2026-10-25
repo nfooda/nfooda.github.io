@@ -73,7 +73,11 @@
   .pub .authors { font-size: .93rem; color: var(--muted); }
   .pub .authors b { color: var(--text); font-weight: 600; }
   .pub .venue { font-size: .93rem; }
-  .pub .venue a { margin-left: 8px; font-size: .85rem; }
+  .pub .venue { color: var(--muted); }
+  .pub .plinks { margin-top: 4px; font-size: .93rem; }
+  .pub .plinks a + a::before { content: "|"; color: var(--muted); margin: 0 8px; display: inline-block; }
+  .pub { padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .pub:last-child { border-bottom: 0; padding-bottom: 0; margin-bottom: 0; }
   .badge { display: inline-block; font-size: .75rem; font-weight: 600; padding: 1px 8px; border-radius: 6px; background: var(--chip); color: var(--accent); margin-right: 6px; }
   .item ul { margin: 6px 0 0; padding-left: 20px; font-size: .95rem; }
   .item li { margin-bottom: 4px; }
@@ -120,13 +124,15 @@
     <h2>Publications</h2>
     <div class="pub">
       <div class="ptitle">Comprehensive Revocation Checking at Scale: the Deployment of CRLite in Mozilla Firefox</div>
-      <div class="authors"><b>Nehal Fooda</b>, James Larisch, John Schanck, Taejoong Chung, Dave Levin, Bruce M. Maggs, Christo Wilson</div>
-      <div class="venue"><span class="badge">SIGCOMM 2026</span>ACM SIGCOMM, Denver, CO<a href="https://doi.org/10.1145/3789240.3829108" target="_blank" rel="noopener">DOI</a></div>
+      <div class="venue"><em>ACM SIGCOMM 2026</em></div>
+      <div class="authors"><b>Nehal Fooda</b>, James Larisch, John M. Schank, Taejoong Chung, Dave Levin, Bruce M. Maggs, Christo Wilson</div>
+      <div class="plinks"><a href="https://doi.org/10.1145/3789240.3829108" target="_blank" rel="noopener">Paper</a></div>
     </div>
     <div class="pub">
       <div class="ptitle">A First Look at Certificate Revocation Latency</div>
-      <div class="authors"><b>Nehal Fooda</b>, James Larisch, John Schanck, Bruce M. Maggs, Taejoong Chung, Dave Levin</div>
-      <div class="venue"><span class="badge">IMC 2026</span>ACM Internet Measurement Conference<a href="https://doi.org/10.1145/3777912.3839820" target="_blank" rel="noopener">DOI</a></div>
+      <div class="venue"><em>ACM IMC 2026</em></div>
+      <div class="authors"><b>Nehal Fooda</b>, James Larisch, John M. Schank, Bruce M. Maggs, Taejoong Chung, Dave Levin</div>
+      <div class="plinks"><a href="https://doi.org/10.1145/3777912.3839820" target="_blank" rel="noopener">Paper</a></div>
     </div>
   </section>
 
