@@ -108,28 +108,23 @@
     <a href="#publications">Publications</a>
   </nav>
 
-  <div class="banner">
-    <strong>Seeking Summer 2027 internships</strong> in security, privacy, or networking research and engineering.
-  </div>
 
   <section id="about">
     <h2>About</h2>
-    <p>I'm a Ph.D. student at the University of Maryland, advised by <a href="https://www.cs.umd.edu/~dml/" target="_blank" rel="noopener">Prof. Dave Levin</a>. I work on Internet measurement and network security, with a focus on the Web PKI: how quickly certificate revocations actually reach browsers, how Firefox checks revocation at scale with CRLite, and how privacy technologies like DNS over HTTPS and Encrypted Client Hello are used in practice. My work has appeared at ACM SIGCOMM and ACM IMC.</p>
+    <p>I'm a fourth year Ph.D. student at the University of Maryland, advised by <a href="https://www.cs.umd.edu/~dml/" target="_blank" rel="noopener">Prof. Dave Levin</a>. My research is in web privacy and network security: I measure how privacy-preserving technologies such as DNS over HTTPS, TLS, and certificate revocation actually perform and get adopted in real-world browsers.</p>
   </section>
 
   <section id="research">
     <h2>Research</h2>
     <div class="item">
-      <div class="title">How fast do certificate revocations reach browsers?</div>
-      <p>When a website's certificate is revoked, browsers can keep trusting it for hours or days. I built a framework that issues and immediately revokes certificates, then watches each certificate authority's OCSP, CRL, and CRLite data until the revocation appears, measuring that window of vulnerability across the CAs behind most of the web. I'm now extending it to the long tail of CAs.</p>
+      <div class="title">Evaluating Modern Certificate Revocation (CRLite)</div>
+      <p>Measuring how PKI changes since 2017 (shorter certificate lifetimes, the rise of Let's Encrypt) affect large-scale revocation. Evaluating CRLite filter generation and partitioning strategies under normal and mass-revocation events, and quantifying the window of vulnerability and bandwidth overhead.</p>
+      <div class="tags"><span>PKI</span><span>TLS</span><span>Browser security</span><span>Measurement</span></div>
     </div>
     <div class="item">
-      <div class="title">Revocation checking at scale with CRLite</div>
-      <p>With Mozilla, I evaluated CRLite, the system that lets every Firefox desktop user check certificate revocation privately and locally. Using real Firefox telemetry, we measured how much of the web it covers, where it falls short, and how it holds up during mass-revocation events.</p>
-    </div>
-    <div class="item">
-      <div class="title">Measuring web privacy from the user's side</div>
-      <p>I'm building a privacy-preserving Firefox extension that measures how often real users' connections actually use encrypted DNS, Encrypted Client Hello, and modern revocation checking, ahead of a user study with about 200 participants.</p>
+      <div class="title">Privacy-Technology Adoption in Firefox</div>
+      <p>Designing and building a Firefox extension that logs users' privacy settings and browser behavior to study real-world adoption of DNS over HTTPS, TLS, and revocation checking.</p>
+      <div class="tags"><span>DoH</span><span>Web privacy</span><span>User study</span><span>JavaScript</span></div>
     </div>
   </section>
 
@@ -139,7 +134,7 @@
       <div class="ptitle">Comprehensive Revocation Checking at Scale: the Deployment of CRLite in Mozilla Firefox</div>
       <div class="venue"><em>ACM SIGCOMM 2026</em></div>
       <div class="authors"><b>Nehal Fooda</b>, James Larisch, John M. Schank, Taejoong Chung, Dave Levin, Bruce M. Maggs, Christo Wilson</div>
-      <div class="plinks"><a href="https://doi.org/10.1145/3789240.3829108" target="_blank" rel="noopener">Paper</a></div>
+      <div class="plinks"><a href="https://doi.org/10.1145/3789240.3829108" target="_blank" rel="noopener">Paper</a><a href="https://www.youtube.com/watch?v=GIkU3SzxwvU" target="_blank" rel="noopener">Presentation</a></div>
     </div>
     <div class="pub">
       <div class="ptitle">A First Look at Certificate Revocation Latency</div>
