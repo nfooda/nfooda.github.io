@@ -1,1166 +1,184 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nehal - Personal Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nehal Fooda</title>
+<link rel="icon" href="assets/images/logo.ico">
+<meta name="description" content="Nehal Fooda — Ph.D. student at the University of Maryland researching web privacy and network security.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1f2328;
+    --muted: #5d6670;
+    --line: #e6e8eb;
+    --accent: #1d4ed8;
+    --chip: #f3f5f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111418; --text: #e6e8eb; --muted: #9aa3ad;
+      --line: #262b31; --accent: #7aa2ff; --chip: #1a1f25;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111418; --text: #e6e8eb; --muted: #9aa3ad;
+    --line: #262b31; --accent: #7aa2ff; --chip: #1a1f25;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 Inter, system-ui, -apple-system, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 20px 72px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-  <!--
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  header { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+  .photo { width: 132px; height: 132px; border-radius: 50%; object-fit: cover; background: var(--chip); flex-shrink: 0; }
+  h1 { font-family: "Source Serif 4", Georgia, serif; font-size: 2.2rem; line-height: 1.15; margin: 0 0 4px; }
+  .role { color: var(--muted); margin: 0 0 14px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .links a {
+    font-size: .9rem; font-weight: 500; padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--text);
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .links a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .links a.primary:hover { opacity: .9; color: #fff; }
 
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  .banner {
+    margin: 32px 0 0; padding: 12px 16px; border-left: 3px solid var(--accent);
+    background: var(--chip); border-radius: 6px; font-size: .95rem;
+  }
 
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  section { margin-top: 48px; }
+  h2 {
+    font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 18px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  p { margin: 0 0 12px; }
+
+  .item { margin-bottom: 22px; }
+  .item:last-child { margin-bottom: 0; }
+  .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .title { font-weight: 600; }
+  .date { color: var(--muted); font-size: .9rem; white-space: nowrap; }
+  .sub { color: var(--muted); font-size: .95rem; }
+  .item p { margin: 6px 0 0; font-size: .95rem; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tags span { font-size: .8rem; padding: 2px 9px; border-radius: 6px; background: var(--chip); color: var(--muted); }
+
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 4px 0; }
+
+  .skills div { margin-bottom: 6px; }
+  .skills b { font-weight: 600; }
+
+  footer { margin-top: 64px; color: var(--muted); font-size: .85rem; }
+</style>
 </head>
-
 <body>
+<main>
 
-  <!--
-    - #MAIN
-  -->
-
-  <main>
-
-    <!--
-      - #SIDEBAR
-    -->
-
-    <aside class="sidebar" data-sidebar>
-
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="./assets/images/nehal-avatar.png" alt="Nehal Fooda" width="80">
-        </figure>
-
-        <div class="info-content">
-          <h1 class="name" title="Nehal Fooda">Nehal Fooda</h1>
-
-          <p class="title">Ph.D. Student Electrical and Computer Engineering</p>
-        </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
+  <header>
+    <img class="photo" src="assets/images/nehal-avatar.png" alt="Nehal Fooda">
+    <div>
+      <h1>Nehal Fooda</h1>
+      <p class="role">Ph.D. Student, Computer Engineering · University of Maryland, College Park</p>
+      <div class="links">
+        <a class="primary" href="https://drive.google.com/file/d/1NsbqRcnARFT6lHdkfsBHWD9K8QvDpisZ/view?usp=share_link" target="_blank" rel="noopener">CV</a>
+        <a href="mailto:nfooda12@gmail.com">Email</a>
+        <a href="https://github.com/nfooda" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/nehal-fooda/" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:nfooda12@gmail.com" class="contact-link">nfooda12@gmail.com</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+12405015992" class="contact-link">+1 (240) 501-5992</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-
-              <time datetime="2000-12-12">December 12, 2000</time>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>College Park, MD, USA</address>
-            </div>
-
-          </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-        <ul class="social-list">
-
-          <li class="social-item">
-            <a href="https://www.linkedin.com/in/nehal-fooda/" class="social-link">
-              <ion-icon name="logo-linkedin"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="https://github.com/nfooda" class="social-link">
-              <ion-icon name="logo-github"></ion-icon>
-            </a>
-          </li>
-
-          <!-- <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-twitter"></ion-icon>
-            </a>
-          </li>
-
-          <li class="social-item">
-            <a href="#" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-          </li> -->
-
-        </ul>
-
-      </div>
-
-    </aside>
-
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Projects</button>
-          </li>
-
-          <!-- <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li> -->
-
-        </ul>
-
-      </nav>
-
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            I focus on web privacy and network security, with an emphasis on evaluating real-world, privacy-preserving technologies. My recent work involves analyzing the adoption of DNS over HTTPS (DOH), TLS, and certificate revocation systems in modern web browsers. 
-          </p>
-
-          <p>
-            I also bring deep experience in full-stack development, software reliability, and hardware security, and have applied machine learning and NLP (Transformers, LSTMs) to data analysis and topic discovery
-          </p>
-        </section>
-
-
-        <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="Security Research icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Security Research</h4>
-
-                <p class="service-item-text">
-                  Developing and evaluating security and privacy mechanisms in modern web browsers and networking protocols.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Web development</h4>
-
-                <p class="service-item-text">
-                  High-quality development of web applications using Django, React, and Angular.
-                </p>
-              </div>
-
-            </li>
-
-            <!-- <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Mobile apps</h4>
-
-                <p class="service-item-text">
-                  Professional development of applications for iOS and Android.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Photography</h4>
-
-                <p class="service-item-text">
-                  I make high-quality photos of any category at a professional level.
-                </p>
-              </div>
-
-            </li> -->
-
-          </ul>
-
-        </section>
-
-
-        <!--
-          - testimonials
-        -->
-
-        <section class="testimonials">
-
-          <h3 class="h3 testimonials-title">Honors & Awards</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <!-- <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Dean's Fellowship" width="60" data-testimonials-avatar>
-                </figure> -->
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Dean's Fellowship</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    University of Maryland, College Park. (2024—2025)
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <!-- <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Graduate Assistantship" width="60" data-testimonials-avatar>
-                </figure> -->
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Graduate Assistantship</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    University of Maryland, College Park. (Aug 2023—Present)
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <!-- <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Scholar Alumna" width="60" data-testimonials-avatar>
-                </figure> -->
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Scholar Alumna</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Abdulla Al Ghurair Foundation for Education. (2019—2023)
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <!-- <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Dean's List" width="60" data-testimonials-avatar>
-                </figure> -->
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Dean's List</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    The American University in Cairo. (2019—2023)
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </section>
-
-
-        <!--
-          - testimonials modal
-        -->
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Dean's Fellowship" width="80" data-modal-img>
-              </figure>
-
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Dean's Fellowship</h4>
-
-              <time datetime="2024-01-01">2024—2025</time>
-
-              <div data-modal-text>
-                <p>
-                  University of Maryland, College Park. [cite: 150]
-                </p>
-              </div>
-
-            </div>
-
-          </section>
-
-        </div>
-
-
-        <!--
-          - clients
-        -->
-
-        <!-- <section class="clients">
-
-          <h3 class="h3 clients-title">Clients</h3>
-
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-1-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
-              </a>
-            </li>
-
-          </ul>
-
-        </section> -->
-
-      </article>
-
-
-
-
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">University of Maryland - College Park</h4>
-
-              <span>Aug 2023 — Present</span>
-
-              <p class="timeline-text">
-                Ph.D. in Computer Engineering. 
-                <ul>
-                  <li> Advisor: Prof. Dave Levin. </li>
-                  <li> Research focus: Web privacy and network security. </li>
-                  <li> Graduate Dean's Fellowship (2024-2025). </li>
-                  <li> GPA: 3.76/4.0  </li>
-                </ul>
-                
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">The American University in Cairo</h4>
-
-              <span>2019 — 2023</span>
-
-              <p class="timeline-text">
-                B.S. in Computer Engineering. 
-                <ul>
-                  <li>GPA: 3.80/4.00 (Magna cum laude). </li>
-                  <li>Minors: Interactive Media Design, Mathematics. </li>
-                </ul>
-              </p>
-
-            </li>
-
-            <!-- <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">High school of art and design</h4>
-
-              <span>2002 — 2004</span>
-
-              <p class="timeline-text">
-                Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur
-                magni dolores
-                eos.
-              </p>
-
-            </li> -->
-
-          </ol>
-
-        </section>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Experience</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Graduate Research Assistant (University of Maryland)</h4>
-
-              <span>Jan 2025 — Present</span>
-
-              <p class="timeline-text">
-                Investigating web privacy, network security, and certificate revocation systems.
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Graduate Teaching Assistant (University of Maryland)</h4> 
-
-              <span>Aug 2023 — Present</span>
-
-              <ul class="experience-list">
-                <li>Led weekly lab and discussion sessions for courses including Reverse Engineering, HW Security, and Computer Organization.</li>
-                <li>Held regular office hours to support students with project-based assignments and clarifying complex concepts.</li>
-                <li>Assisted in grading exams and assignments.</li>
-              </ul>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Software Development Intern (Siemens)</h4>
-
-              <span>Oct 2022 — March 2023</span> 
-
-              <ul class="experience-list">
-                <li>Developed a feature-rich internal dashboard for Jira statistics.</li>
-                <li>Enhanced the 'pdbview' utility using C/C++.</li>
-                <li>Conducted Coverity code analysis to improve reliability.</li>
-              </ul>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Programming Languages</h5>
-              </div>
-
-              <p class="skill-text">Python, C/C++, Java, Javascript, SQL, MATLAB.</p>
-              
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Frameworks & Tools</h5>
-              </div>
-
-              <p class="skill-text">Django, React, Angular, TensorFlow, Keras, Android Studio, Keil uVision, Packet Tracer, Git, JMeter. </p>
-              
-            </li>
-            </li>
-
-          </ul>
-
-        </section>
-
-        <section class="download-cv" style="text-align: center; padding-top: 30px; padding-bottom: 50px;">
-          <a href="https://drive.google.com/file/d/1NsbqRcnARFT6lHdkfsBHWD9K8QvDpisZ/view?usp=share_link" target="_blank" class="form-btn">
-              <ion-icon name="download-outline"></ion-icon>
-              <span>View/Download Full CV (PDF)</span>
-          </a>
-          <p style="font-size: 14px; margin-top: 10px; color: var(--light-gray);">
-              (The CV is hosted externally for faster website loading.)
-          </p>
-      </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #PROJECTS
-      -->
-
-      <article class="projects" data-page="projects">
-
-        <header>
-          <h2 class="h2 article-title">Projects</h2>
-        </header>
-
-        <section class="projects">
-
-          <!-- <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web design</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Applications</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Web development</button>
-            </li>
-
-          </ul> -->
-
-          <!-- <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web design</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Applications</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>Web development</button>
-              </li>
-
-            </ul>
-
-          </div> -->
-
-          <ul class="project-list">
-
-            <li class="project-item  active" data-filter-item data-category="research">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-1.jpg" alt="CRLite" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Evaluation of Certificate Revocation Systems (CRLite)</h3>
-
-                <p class="project-category">Research</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="research">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-2.png" alt="Firefox Plugin" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Firefox Web-Privacy Plugin Study</h3>
-
-                <p class="project-category">Research</p>
-
-              </a>
-            </li>
-
-            <!-- <li class="project-item  active" data-filter-item data-category="research">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Fundo</h3>
-
-                <p class="project-category">Research</p>
-
-              </a>
-            </li> -->
-
-            <!-- <li class="project-item  active" data-filter-item data-category="research">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Brawlhalla</h3>
-
-                <p class="project-category">Research</p>
-
-              </a>
-            </li> -->
-
-            <!-- <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Arrival</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li> -->
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #BLOG
-      -->
-
-      <!-- <article class="blog" data-page="blog">
-
-        <header>
-          <h2 class="h2 article-title">Blog</h2>
-        </header>
-
-        <section class="blog-posts">
-
-          <ul class="blog-posts-list">
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
-
-                  <p class="blog-text">
-                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
-
-                  <p class="blog-text">
-                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #80</h3>
-
-                  <p class="blog-text">
-                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
-
-                  <p class="blog-text">
-                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
-
-                  <p class="blog-text">
-                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #79</h3>
-
-                  <p class="blog-text">
-                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article> -->
-
-
-
-
-
-      <!--
-        - #CONTACT
-      -->
-
-      <!-- <article class="contact" data-page="contact">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199666.5651251294!2d-121.58334177520186!3d38.56165006739519!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809ac672b28397f9%3A0x921f6aaa74197fdb!2sSacramento%2C%20CA%2C%20USA!5e0!3m2!1sen!2sbd!4v1647608789441!5m2!1sen!2sbd"
-              width="400" height="300" loading="lazy"></iframe>
-          </figure>
-        </section>
-
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-
-          <form action="#" class="form" data-form>
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
-
-        </section>
-
-      </article> -->
-
     </div>
+  </header>
 
-  </main>
+  <div class="banner">
+    <strong>Seeking Summer 2027 internships</strong> in security, privacy, or networking research and engineering.
+  </div>
 
+  <section id="about">
+    <h2>About</h2>
+    <p>I'm a Ph.D. student at the University of Maryland, advised by <a href="https://www.cs.umd.edu/~dml/" target="_blank" rel="noopener">Prof. Dave Levin</a>. My research is in web privacy and network security: I measure how privacy-preserving technologies such as DNS over HTTPS, TLS, and certificate revocation actually perform and get adopted in real-world browsers.</p>
+    <p>Before my Ph.D., I worked as a software engineer intern at Siemens, building C/C++ tooling and internal dashboards, and I have hands-on experience in full-stack development, hardware security, and applied ML/NLP.</p>
+  </section>
 
+  <section id="research">
+    <h2>Research</h2>
+    <div class="item">
+      <div class="title">Evaluating Modern Certificate Revocation (CRLite)</div>
+      <p>Measuring how PKI changes since 2017 (shorter certificate lifetimes, the rise of Let's Encrypt) affect large-scale revocation. Evaluating CRLite filter generation and partitioning strategies under normal and mass-revocation events, and quantifying the window of vulnerability and bandwidth overhead.</p>
+      <div class="tags"><span>PKI</span><span>TLS</span><span>Browser security</span><span>Measurement</span></div>
+    </div>
+    <div class="item">
+      <div class="title">Privacy-Technology Adoption in Firefox</div>
+      <p>Designing and building a Firefox extension that logs users' privacy settings and browser behavior to study real-world adoption of DNS over HTTPS, TLS, and revocation checking.</p>
+      <div class="tags"><span>DoH</span><span>Web privacy</span><span>User study</span><span>JavaScript</span></div>
+    </div>
+  </section>
 
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="item">
+      <div class="row"><span class="title">Graduate Research Assistant</span><span class="date">Jan 2025 – Present</span></div>
+      <div class="sub">University of Maryland</div>
+      <p>Web privacy, network security, and certificate revocation systems.</p>
+    </div>
+    <div class="item">
+      <div class="row"><span class="title">Graduate Teaching Assistant</span><span class="date">Aug 2023 – Present</span></div>
+      <div class="sub">University of Maryland</div>
+      <p>Lead labs and discussions for Reverse Engineering, Hardware Security, and Computer Organization.</p>
+    </div>
+    <div class="item">
+      <div class="row"><span class="title">Software Development Intern</span><span class="date">Oct 2022 – Mar 2023</span></div>
+      <div class="sub">Siemens Digital Industries Software</div>
+      <p>Extended the pdbview utility of Calibre XRC in C/C++ by migrating its databases to remove size limits; built a Jira analytics dashboard; resolved critical issues found through Coverity static analysis.</p>
+    </div>
+    <div class="item">
+      <div class="row"><span class="title">Full-Stack Web Development Intern</span><span class="date">Aug – Nov 2022</span></div>
+      <div class="sub">bld.ai</div>
+      <p>Built web applications with React front ends and Django REST back ends.</p>
+    </div>
+  </section>
 
+  <section id="education">
+    <h2>Education</h2>
+    <div class="item">
+      <div class="row"><span class="title">Ph.D., Computer Engineering</span><span class="date">2023 – Present</span></div>
+      <div class="sub">University of Maryland, College Park · GPA 3.76</div>
+    </div>
+    <div class="item">
+      <div class="row"><span class="title">B.S., Computer Engineering, magna cum laude</span><span class="date">2019 – 2023</span></div>
+      <div class="sub">The American University in Cairo · GPA 3.80 · Minors in Mathematics and Interactive Media Design</div>
+    </div>
+  </section>
 
+  <section id="honors">
+    <h2>Honors</h2>
+    <ul class="plain">
+      <li><span>Dean's Fellowship, University of Maryland</span><span class="date">2024 – 2025</span></li>
+      <li><span>Graduate Assistantship, University of Maryland</span><span class="date">2023 – Present</span></li>
+      <li><span>Scholar, Abdulla Al Ghurair Foundation for Education</span><span class="date">2019 – 2023</span></li>
+      <li><span>Dean's List, The American University in Cairo</span><span class="date">2019 – 2023</span></li>
+    </ul>
+  </section>
 
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
+  <section id="skills" class="skills">
+    <h2>Skills</h2>
+    <div><b>Languages:</b> Python, C/C++, JavaScript, Java, SQL, MATLAB</div>
+    <div><b>Security &amp; networking:</b> TLS/PKI, DNS/DoH, reverse engineering, hardware security, static analysis (Coverity)</div>
+    <div><b>Frameworks &amp; tools:</b> Django, React, Angular, TensorFlow, Keras, Git, JMeter</div>
+  </section>
 
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <footer>© 2026 Nehal Fooda · College Park, MD</footer>
 
+</main>
 </body>
-
 </html>
