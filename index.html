@@ -104,10 +104,8 @@
   </header>
 
   <nav class="links" style="margin-top:28px">
-    <a href="#publications">Publications</a>
     <a href="#research">Research</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
+    <a href="#publications">Publications</a>
   </nav>
 
   <div class="banner">
@@ -117,7 +115,22 @@
   <section id="about">
     <h2>About</h2>
     <p>I'm a Ph.D. student at the University of Maryland, advised by <a href="https://www.cs.umd.edu/~dml/" target="_blank" rel="noopener">Prof. Dave Levin</a>. I work on Internet measurement and network security, with a focus on the Web PKI: how quickly certificate revocations actually reach browsers, how Firefox checks revocation at scale with CRLite, and how privacy technologies like DNS over HTTPS and Encrypted Client Hello are used in practice. My work has appeared at ACM SIGCOMM and ACM IMC.</p>
-    <p>Before my Ph.D., I worked as a software engineer intern at Siemens, building C/C++ tooling and internal dashboards, and I have hands-on experience in full-stack development, hardware security, and applied ML/NLP.</p>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <div class="item">
+      <div class="title">How fast do certificate revocations reach browsers?</div>
+      <p>When a website's certificate is revoked, browsers can keep trusting it for hours or days. I built a framework that issues and immediately revokes certificates, then watches each certificate authority's OCSP, CRL, and CRLite data until the revocation appears, measuring that window of vulnerability across the CAs behind most of the web. I'm now extending it to the long tail of CAs.</p>
+    </div>
+    <div class="item">
+      <div class="title">Revocation checking at scale with CRLite</div>
+      <p>With Mozilla, I evaluated CRLite, the system that lets every Firefox desktop user check certificate revocation privately and locally. Using real Firefox telemetry, we measured how much of the web it covers, where it falls short, and how it holds up during mass-revocation events.</p>
+    </div>
+    <div class="item">
+      <div class="title">Measuring web privacy from the user's side</div>
+      <p>I'm building a privacy-preserving Firefox extension that measures how often real users' connections actually use encrypted DNS, Encrypted Client Hello, and modern revocation checking, ahead of a user study with about 200 participants.</p>
+    </div>
   </section>
 
   <section id="publications">
@@ -134,91 +147,6 @@
       <div class="authors"><b>Nehal Fooda</b>, James Larisch, John M. Schank, Bruce M. Maggs, Taejoong Chung, Dave Levin</div>
       <div class="plinks"><a href="https://doi.org/10.1145/3777912.3839820" target="_blank" rel="noopener">Paper</a></div>
     </div>
-  </section>
-
-  <section id="research">
-    <h2>Research</h2>
-    <div class="item">
-      <div class="row"><span class="title">Certificate Revocation Latency</span><span class="date">IMC 2026 · extension ongoing</span></div>
-      <ul>
-        <li>Built a framework that issues certificates, revokes them immediately, and polls each CA's OCSP responder and CRL every minute, alongside Mozilla's CRLite snapshots, until the revocation appears.</li>
-        <li>Ran about 3,000 trials over 22 days against six CAs that together account for over 75% of Firefox certificate validations.</li>
-        <li>All six CAs met their Baseline Requirements deadlines, yet clients stay exposed for hours or days because of pre-signed OCSP responses, cached CRLs, and filter rebuild schedules.</li>
-        <li>Now extending the study to every CA with an automated revocation interface, regional CAs, and revocations requested by portal, email, or phone.</li>
-      </ul>
-      <div class="tags"><span>Web PKI</span><span>OCSP / CRL</span><span>Internet measurement</span><span>Python</span></div>
-    </div>
-    <div class="item">
-      <div class="row"><span class="title">CRLite Deployment in Mozilla Firefox</span><span class="date">SIGCOMM 2026</span></div>
-      <ul>
-        <li>Evaluated CRLite, the on-device revocation system deployed to all Firefox desktop users, in collaboration with Mozilla engineers.</li>
-        <li>Using 90 days of Firefox telemetry and production logs, found CRLite covers 87.63% of real certificate validations, and traced nearly all of the rest to update windows and ingest delays.</li>
-        <li>Measured filter update costs during the 2025 Microsoft mass revocation and simulated revoking half of all certificates, showing the filter recovers within a week under short certificate lifetimes.</li>
-      </ul>
-      <div class="tags"><span>CRLite</span><span>Browser security</span><span>TLS</span><span>Telemetry analysis</span></div>
-    </div>
-    <div class="item">
-      <div class="row"><span class="title">Measuring Web Privacy from the User's Side</span><span class="date">ongoing</span></div>
-      <ul>
-        <li>Built a Firefox extension and server back end that record, per site visited, whether the connection uses encrypted DNS, Encrypted Client Hello (ECH), and OCSP-free revocation checking.</li>
-        <li>Designed for participant privacy: only per-site aggregate counts, no browsing history, and nothing uploaded without consent.</li>
-        <li>Validating its measurements against Firefox's network logs ahead of an IRB-approved deployment to about 200 participants.</li>
-      </ul>
-      <div class="tags"><span>DoH</span><span>ECH</span><span>Web privacy</span><span>JavaScript</span></div>
-    </div>
-  </section>
-
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="item">
-      <div class="row"><span class="title">Graduate Research Assistant</span><span class="date">Jan 2025 – Present</span></div>
-      <div class="sub">University of Maryland</div>
-      <p>Internet measurement and Web PKI security; first-author papers at SIGCOMM 2026 and IMC 2026.</p>
-    </div>
-    <div class="item">
-      <div class="row"><span class="title">Graduate Teaching Assistant</span><span class="date">Aug 2023 – Present</span></div>
-      <div class="sub">University of Maryland</div>
-      <p>Lead labs and discussions for Reverse Engineering, Hardware Security, and Computer Organization.</p>
-    </div>
-    <div class="item">
-      <div class="row"><span class="title">Software Development Intern</span><span class="date">Oct 2022 – Mar 2023</span></div>
-      <div class="sub">Siemens Digital Industries Software</div>
-      <p>Extended the pdbview utility of Calibre XRC in C/C++ by migrating its databases to remove size limits; built a Jira analytics dashboard; resolved critical issues found through Coverity static analysis.</p>
-    </div>
-    <div class="item">
-      <div class="row"><span class="title">Full-Stack Web Development Intern</span><span class="date">Aug – Nov 2022</span></div>
-      <div class="sub">bld.ai</div>
-      <p>Built web applications with React front ends and Django REST back ends.</p>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2>Education</h2>
-    <div class="item">
-      <div class="row"><span class="title">Ph.D., Computer Engineering</span><span class="date">2023 – Present</span></div>
-      <div class="sub">University of Maryland, College Park · GPA 3.83</div>
-    </div>
-    <div class="item">
-      <div class="row"><span class="title">B.S., Computer Engineering, magna cum laude</span><span class="date">2019 – 2023</span></div>
-      <div class="sub">The American University in Cairo · GPA 3.80 · Minors in Mathematics and Interactive Media Design</div>
-    </div>
-  </section>
-
-  <section id="honors">
-    <h2>Honors</h2>
-    <ul class="plain">
-      <li><span>Dean's Fellowship, University of Maryland</span><span class="date">2024 – 2025</span></li>
-      <li><span>Graduate Assistantship, University of Maryland</span><span class="date">2023 – Present</span></li>
-      <li><span>Scholar, Abdulla Al Ghurair Foundation for Education</span><span class="date">2019 – 2023</span></li>
-      <li><span>Dean's List, The American University in Cairo</span><span class="date">2019 – 2023</span></li>
-    </ul>
-  </section>
-
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <div><b>Languages:</b> Python, C/C++, Rust, JavaScript, Java, SQL, MATLAB</div>
-    <div><b>Security &amp; networking:</b> TLS/PKI, OCSP/CRL, DNS/DoH, ECH, reverse engineering, hardware security, static analysis (Coverity)</div>
-    <div><b>Frameworks &amp; tools:</b> Django, React, Angular, TensorFlow, Keras, Git, JMeter</div>
   </section>
 
   <footer>© 2026 Nehal Fooda · College Park, MD</footer>
