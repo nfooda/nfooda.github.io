@@ -4,20 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nehal Fooda</title>
-<link rel="icon" href="assets/images/logo.ico">
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
 <meta name="description" content="Nehal Fooda — Ph.D. student at the University of Maryland researching web privacy and network security.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    color-scheme: dark;
-    --bg: #111418;
-    --text: #e6e8eb;
-    --muted: #9aa3ad;
-    --line: #262b31;
-    --accent: #7aa2ff;
-    --chip: #1a1f25;
+    color-scheme: light;
+    --bg: #ffffff;
+    --text: #1f2328;
+    --muted: #5d6670;
+    --line: #e6e8eb;
+    --accent: #1d4ed8;
+    --chip: #f3f5f8;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -39,8 +41,8 @@
     border: 1px solid var(--line); color: var(--text);
   }
   .links a:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-  .links a.primary { background: var(--accent); border-color: var(--accent); color: #0d1117; }
-  .links a.primary:hover { opacity: .9; color: #0d1117; }
+  .links a.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .links a.primary:hover { opacity: .9; color: #fff; }
 
   .banner {
     margin: 32px 0 0; padding: 12px 16px; border-left: 3px solid var(--accent);
@@ -111,11 +113,16 @@
 
   <section id="about">
     <h2>About</h2>
-    <p>I'm a fourth year Ph.D. student at the University of Maryland, advised by <a href="https://www.cs.umd.edu/~dml/" target="_blank" rel="noopener">Prof. Dave Levin</a>. My research is in web privacy and network security: I measure how privacy-preserving technologies such as DNS over HTTPS, TLS, and certificate revocation actually perform and get adopted in real-world browsers.</p>
+    <p>I'm a fourth year Ph.D. student at the University of Maryland, advised by <a href="https://www.cs.umd.edu/~dml/" target="_blank" rel="noopener">Prof. Dave Levin</a>. My research is in web privacy and network security, with a focus on the Web PKI: I measure how quickly certificate revocations reach browsers, evaluate how Firefox checks revocation at scale with CRLite, and study how privacy technologies such as DNS over HTTPS and TLS are adopted in real-world browsers.</p>
   </section>
 
   <section id="research">
     <h2>Research</h2>
+    <div class="item">
+      <div class="title">Certificate Revocation Latency</div>
+      <p>Measuring how long it takes for a revoked certificate to stop being trusted. Issuing and immediately revoking certificates, then tracking when the revocation appears in each CA's OCSP responses, CRLs, and CRLite, to quantify the window of vulnerability across major CAs. Now extending the study to the long tail of CAs.</p>
+      <div class="tags"><span>PKI</span><span>OCSP / CRL</span><span>Measurement</span><span>Python</span></div>
+    </div>
     <div class="item">
       <div class="title">Evaluating Modern Certificate Revocation (CRLite)</div>
       <p>Measuring how PKI changes since 2017 (shorter certificate lifetimes, the rise of Let's Encrypt) affect large-scale revocation. Evaluating CRLite filter generation and partitioning strategies under normal and mass-revocation events, and quantifying the window of vulnerability and bandwidth overhead.</p>
@@ -131,16 +138,16 @@
   <section id="publications">
     <h2>Publications</h2>
     <div class="pub">
-      <div class="ptitle">Comprehensive Revocation Checking at Scale: the Deployment of CRLite in Mozilla Firefox</div>
-      <div class="venue"><em>ACM SIGCOMM 2026</em></div>
-      <div class="authors"><b>Nehal Fooda</b>, James Larisch, John M. Schank, Taejoong Chung, Dave Levin, Bruce M. Maggs, Christo Wilson</div>
-      <div class="plinks"><a href="https://doi.org/10.1145/3789240.3829108" target="_blank" rel="noopener">Paper</a><a href="https://www.youtube.com/watch?v=GIkU3SzxwvU" target="_blank" rel="noopener">Presentation</a></div>
-    </div>
-    <div class="pub">
       <div class="ptitle">A First Look at Certificate Revocation Latency</div>
       <div class="venue"><em>ACM IMC 2026</em></div>
       <div class="authors"><b>Nehal Fooda</b>, James Larisch, John M. Schank, Bruce M. Maggs, Taejoong Chung, Dave Levin</div>
       <div class="plinks"><a href="https://doi.org/10.1145/3777912.3839820" target="_blank" rel="noopener">Paper</a></div>
+    </div>
+    <div class="pub">
+      <div class="ptitle">Comprehensive Revocation Checking at Scale: the Deployment of CRLite in Mozilla Firefox</div>
+      <div class="venue"><em>ACM SIGCOMM 2026</em></div>
+      <div class="authors"><b>Nehal Fooda</b>, James Larisch, John M. Schank, Taejoong Chung, Dave Levin, Bruce M. Maggs, Christo Wilson</div>
+      <div class="plinks"><a href="https://doi.org/10.1145/3789240.3829108" target="_blank" rel="noopener">Paper</a><a href="https://www.youtube.com/watch?v=GIkU3SzxwvU" target="_blank" rel="noopener">Presentation</a></div>
     </div>
   </section>
 
